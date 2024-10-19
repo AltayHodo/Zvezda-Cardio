@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
-import '../styles/SignUpPage.css';
+import '../styles/SignUpPage.css';  
 import logo from '../assets/logo.png';
 
-const SignUpPage = () => {
-  const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
+const LogInPage = () => {
+  const [form, setForm] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
 
   const validate = () => {
     const newErrors = {};
-
-    // Full Name Validation
-    if (!form.name || form.name.length < 2) {
-      newErrors.name = 'Full Name must be at least 2 characters long';
-    }
 
     // Email Validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -23,11 +18,6 @@ const SignUpPage = () => {
     // Password Validation
     if (!form.password || form.password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters long';
-    }
-
-    // Confirm Password Validation
-    if (form.confirmPassword !== form.password) {
-      newErrors.confirmPassword = 'Passwords do not match';
     }
 
     setErrors(newErrors);
@@ -43,29 +33,20 @@ const SignUpPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      // Handle form submission here
-      console.log('Form submitted:', form);
+      // Handle login logic here
+      console.log('Login form submitted:', form);
       // Reset the form and errors
-      setForm({ name: '', email: '', password: '', confirmPassword: '' });
+      setForm({ email: '', password: '' });
       setErrors({});
     }
   };
 
   return (
-    <div className="signup-container">
+    <div className="login-container">
       <img src={logo} alt="Logo" className="logo" />
-      <h2>Welcome!</h2>
+      <h2>Welcome Back!</h2>
 
-      <form className="signup-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={form.name}
-          onChange={handleChange}
-        />
-        {errors.name && <div className="error">{errors.name}</div>}
-
+      <form className="login-form" onSubmit={handleSubmit}>
         <input
           type="email"
           name="email"
@@ -84,23 +65,14 @@ const SignUpPage = () => {
         />
         {errors.password && <div className="error">{errors.password}</div>}
 
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          value={form.confirmPassword}
-          onChange={handleChange}
-        />
-        {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
-
-        <button type="submit" className="signup-button">Sign Up</button>
+        <button type="submit" className="login-button">Log In</button>
       </form>
 
-      <div className="login-link">
-        Already have an account? <a href="/login">Log in</a>
+      <div className="signup-link">
+        Don't have an account? <a href="/signup">Sign up</a>
       </div>
     </div>
   );
 };
 
-export default SignUpPage;
+export default LogInPage;
