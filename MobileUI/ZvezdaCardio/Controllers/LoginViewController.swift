@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseCore
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseFirestore
 
 class LoginViewController: UIViewController {
+    
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var error: UILabel!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -36,6 +43,30 @@ class LoginViewController: UIViewController {
             showError(error!)
         }
         
+        let emailOfficial = email.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let passwordOfficial = password.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        Auth.auth().signIn(withEmail: emailOfficial, password: passwordOfficial) { result, error in
+            
+            if error == nil {
+                /* get the user's information from "User" database */
+                let db = Firestore.firestore()
+                db.collection("User").document(emailOfficial).getDocument { (document, error) in
+                    if error == nil {
+                        if document != nil && document!.exists {
+                            let documentData = document!.data()
+                            
+                        }
+                        else {
+                            self.error.text = error?.localizedDescription
+                        }
+                    }
+                    else {
+                        self.error.text = error?.localizedDescription
+                    }
+                }
+            }
+        }
     }
     @IBAction func signupTransition(_ sender: Any) {
         self.performSegue(withIdentifier: "loginToSignup", sender: self)
