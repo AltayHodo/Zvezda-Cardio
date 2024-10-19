@@ -9,8 +9,22 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    var email: String?
+    var name: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
+    @IBAction func statsClicked(_ sender: Any) {
+        self.performSegue(withIdentifier: "homeToStats", sender: self)
+    }
+    
+    @IBAction func zvezdaClicked(_ sender: Any) {
+    }
+    
+    @IBAction func startwalkPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "homeToWalk", sender: self)
+    }
 }

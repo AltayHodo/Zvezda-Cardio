@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var error: UILabel!
     
+    var name: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,14 +56,17 @@ class LoginViewController: UIViewController {
                     if error == nil {
                         if document != nil && document!.exists {
                             let documentData = document!.data()
-                            
+                            self.name = (documentData!["name"] as! String)
+                            self.performSegue(withIdentifier: "loginToHome", sender: self)
                         }
                         else {
                             self.error.text = error?.localizedDescription
+                            self.error.alpha = 1
                         }
                     }
                     else {
                         self.error.text = error?.localizedDescription
+                        self.error.alpha = 1
                     }
                 }
             }
@@ -75,5 +79,13 @@ class LoginViewController: UIViewController {
     func showError(_ message: String) {
         error.text = message
         error.alpha = 1
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loginToHome" {
+            let destinationVC = segue.destination as! HomeViewController
+            destinationVC.email = email.text
+            destinationVC.name = name
+        }
     }
 }
