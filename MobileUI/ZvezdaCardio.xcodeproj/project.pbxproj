@@ -30,7 +30,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		2A6BF3CC2CC336AC00E02B49 /* Exceptions for "ZvezdaCardio" folder in "ZvezdaCardio" target */ = {
+		2A8100BE2CC36DEA00B3EAEF /* Exceptions for "ZvezdaCardio" folder in "ZvezdaCardio" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -43,7 +43,7 @@
 		2A6BF3A62CC336AA00E02B49 /* ZvezdaCardio */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				2A6BF3CC2CC336AC00E02B49 /* Exceptions for "ZvezdaCardio" folder in "ZvezdaCardio" target */,
+				2A8100BE2CC36DEA00B3EAEF /* Exceptions for "ZvezdaCardio" folder in "ZvezdaCardio" target */,
 			);
 			path = ZvezdaCardio;
 			sourceTree = "<group>";
