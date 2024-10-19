@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAbJ8dDWkDegqX6D1ETfTrf8YvkAKQWXLU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>325007941136</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ayushmahale.ZvezdaCardio</string>
+	<key>PROJECT_ID</key>
+	<string>zvezda-cardio</string>
+	<key>STORAGE_BUCKET</key>
+	<string>zvezda-cardio.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:325007941136:ios:76d9c3a80b579f6d897495</string>
+</dict>
+</plist>
