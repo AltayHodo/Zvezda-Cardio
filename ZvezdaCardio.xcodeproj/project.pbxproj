@@ -1,0 +1,568 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		2A6BF3BB2CC336AC00E02B49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A6BF39C2CC336AA00E02B49 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A6BF3A32CC336AA00E02B49;
+			remoteInfo = ZvezdaCardio;
+		};
+		2A6BF3C52CC336AC00E02B49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A6BF39C2CC336AA00E02B49 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A6BF3A32CC336AA00E02B49;
+			remoteInfo = ZvezdaCardio;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2A6BF3A42CC336AA00E02B49 /* ZvezdaCardio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZvezdaCardio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A6BF3BA2CC336AC00E02B49 /* ZvezdaCardioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZvezdaCardioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A6BF3C42CC336AC00E02B49 /* ZvezdaCardioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZvezdaCardioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2A6BF3CC2CC336AC00E02B49 /* Exceptions for "ZvezdaCardio" folder in "ZvezdaCardio" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2A6BF3A32CC336AA00E02B49 /* ZvezdaCardio */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2A6BF3A62CC336AA00E02B49 /* ZvezdaCardio */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2A6BF3CC2CC336AC00E02B49 /* Exceptions for "ZvezdaCardio" folder in "ZvezdaCardio" target */,
+			);
+			path = ZvezdaCardio;
+			sourceTree = "<group>";
+		};
+		2A6BF3BD2CC336AC00E02B49 /* ZvezdaCardioTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ZvezdaCardioTests;
+			sourceTree = "<group>";
+		};
+		2A6BF3C72CC336AC00E02B49 /* ZvezdaCardioUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ZvezdaCardioUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2A6BF3A12CC336AA00E02B49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A6BF3B72CC336AC00E02B49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A6BF3C12CC336AC00E02B49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A6BF39B2CC336AA00E02B49 = {
+			isa = PBXGroup;
+			children = (
+				2A6BF3A62CC336AA00E02B49 /* ZvezdaCardio */,
+				2A6BF3BD2CC336AC00E02B49 /* ZvezdaCardioTests */,
+				2A6BF3C72CC336AC00E02B49 /* ZvezdaCardioUITests */,
+				2A6BF3A52CC336AA00E02B49 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2A6BF3A52CC336AA00E02B49 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A6BF3A42CC336AA00E02B49 /* ZvezdaCardio.app */,
+				2A6BF3BA2CC336AC00E02B49 /* ZvezdaCardioTests.xctest */,
+				2A6BF3C42CC336AC00E02B49 /* ZvezdaCardioUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2A6BF3A32CC336AA00E02B49 /* ZvezdaCardio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A6BF3CD2CC336AC00E02B49 /* Build configuration list for PBXNativeTarget "ZvezdaCardio" */;
+			buildPhases = (
+				2A6BF3A02CC336AA00E02B49 /* Sources */,
+				2A6BF3A12CC336AA00E02B49 /* Frameworks */,
+				2A6BF3A22CC336AA00E02B49 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				2A6BF3A62CC336AA00E02B49 /* ZvezdaCardio */,
+			);
+			name = ZvezdaCardio;
+			packageProductDependencies = (
+			);
+			productName = ZvezdaCardio;
+			productReference = 2A6BF3A42CC336AA00E02B49 /* ZvezdaCardio.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2A6BF3B92CC336AC00E02B49 /* ZvezdaCardioTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A6BF3D22CC336AC00E02B49 /* Build configuration list for PBXNativeTarget "ZvezdaCardioTests" */;
+			buildPhases = (
+				2A6BF3B62CC336AC00E02B49 /* Sources */,
+				2A6BF3B72CC336AC00E02B49 /* Frameworks */,
+				2A6BF3B82CC336AC00E02B49 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A6BF3BC2CC336AC00E02B49 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				2A6BF3BD2CC336AC00E02B49 /* ZvezdaCardioTests */,
+			);
+			name = ZvezdaCardioTests;
+			packageProductDependencies = (
+			);
+			productName = ZvezdaCardioTests;
+			productReference = 2A6BF3BA2CC336AC00E02B49 /* ZvezdaCardioTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2A6BF3C32CC336AC00E02B49 /* ZvezdaCardioUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A6BF3D52CC336AC00E02B49 /* Build configuration list for PBXNativeTarget "ZvezdaCardioUITests" */;
+			buildPhases = (
+				2A6BF3C02CC336AC00E02B49 /* Sources */,
+				2A6BF3C12CC336AC00E02B49 /* Frameworks */,
+				2A6BF3C22CC336AC00E02B49 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A6BF3C62CC336AC00E02B49 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				2A6BF3C72CC336AC00E02B49 /* ZvezdaCardioUITests */,
+			);
+			name = ZvezdaCardioUITests;
+			packageProductDependencies = (
+			);
+			productName = ZvezdaCardioUITests;
+			productReference = 2A6BF3C42CC336AC00E02B49 /* ZvezdaCardioUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A6BF39C2CC336AA00E02B49 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					2A6BF3A32CC336AA00E02B49 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					2A6BF3B92CC336AC00E02B49 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 2A6BF3A32CC336AA00E02B49;
+					};
+					2A6BF3C32CC336AC00E02B49 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 2A6BF3A32CC336AA00E02B49;
+					};
+				};
+			};
+			buildConfigurationList = 2A6BF39F2CC336AA00E02B49 /* Build configuration list for PBXProject "ZvezdaCardio" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2A6BF39B2CC336AA00E02B49;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2A6BF3A52CC336AA00E02B49 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2A6BF3A32CC336AA00E02B49 /* ZvezdaCardio */,
+				2A6BF3B92CC336AC00E02B49 /* ZvezdaCardioTests */,
+				2A6BF3C32CC336AC00E02B49 /* ZvezdaCardioUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2A6BF3A22CC336AA00E02B49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A6BF3B82CC336AC00E02B49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A6BF3C22CC336AC00E02B49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2A6BF3A02CC336AA00E02B49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A6BF3B62CC336AC00E02B49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A6BF3C02CC336AC00E02B49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2A6BF3BC2CC336AC00E02B49 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A6BF3A32CC336AA00E02B49 /* ZvezdaCardio */;
+			targetProxy = 2A6BF3BB2CC336AC00E02B49 /* PBXContainerItemProxy */;
+		};
+		2A6BF3C62CC336AC00E02B49 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A6BF3A32CC336AA00E02B49 /* ZvezdaCardio */;
+			targetProxy = 2A6BF3C52CC336AC00E02B49 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2A6BF3CE2CC336AC00E02B49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZvezdaCardio/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayushmahale.ZvezdaCardio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A6BF3CF2CC336AC00E02B49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZvezdaCardio/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayushmahale.ZvezdaCardio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2A6BF3D02CC336AC00E02B49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2A6BF3D12CC336AC00E02B49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2A6BF3D32CC336AC00E02B49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayushmahale.ZvezdaCardioTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZvezdaCardio.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ZvezdaCardio";
+			};
+			name = Debug;
+		};
+		2A6BF3D42CC336AC00E02B49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayushmahale.ZvezdaCardioTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZvezdaCardio.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ZvezdaCardio";
+			};
+			name = Release;
+		};
+		2A6BF3D62CC336AC00E02B49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayushmahale.ZvezdaCardioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ZvezdaCardio;
+			};
+			name = Debug;
+		};
+		2A6BF3D72CC336AC00E02B49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayushmahale.ZvezdaCardioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ZvezdaCardio;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2A6BF39F2CC336AA00E02B49 /* Build configuration list for PBXProject "ZvezdaCardio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A6BF3D02CC336AC00E02B49 /* Debug */,
+				2A6BF3D12CC336AC00E02B49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A6BF3CD2CC336AC00E02B49 /* Build configuration list for PBXNativeTarget "ZvezdaCardio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A6BF3CE2CC336AC00E02B49 /* Debug */,
+				2A6BF3CF2CC336AC00E02B49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A6BF3D22CC336AC00E02B49 /* Build configuration list for PBXNativeTarget "ZvezdaCardioTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A6BF3D32CC336AC00E02B49 /* Debug */,
+				2A6BF3D42CC336AC00E02B49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A6BF3D52CC336AC00E02B49 /* Build configuration list for PBXNativeTarget "ZvezdaCardioUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A6BF3D62CC336AC00E02B49 /* Debug */,
+				2A6BF3D72CC336AC00E02B49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A6BF39C2CC336AA00E02B49 /* Project object */;
+}
