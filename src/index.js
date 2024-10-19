@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './style.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './styles/General.css';  
+import SignUpPage from './components/SignUpPage';
+import LoginPage from './components/LogInPage';
 
+// Entry point for the app
 const App = () => {
   return (
-    <div>
-      <h1>Hello from React!</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<SignUpPage />} />  {/*default*/}
+      </Routes>
+    </Router>
   );
 };
 

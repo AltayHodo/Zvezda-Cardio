@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --main-bg-color: rgb(28,32,59);
+}
+
+body{
+  background-color: var(--main-bg-color);
+}
