@@ -6,6 +6,7 @@ import SignUpPage from './components/SignUpPage';
 import LogInPage from './components/LogInPage';
 import HomePage from './components/HomePage';
 import StatsPage from './components/StatsPage';
+import Leaderboard from './components/Leaderboard';
 import { UserProvider } from './UserContext';  
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/login" element={<LogInPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/stats" element={<StatsPage />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="*" element={<SignUpPage />} />  {/* Default route */}
         </Routes>
       </Router>

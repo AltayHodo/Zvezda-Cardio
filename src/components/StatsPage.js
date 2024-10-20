@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../FirebaseConfig';
 import { UserContext } from '../UserContext';
+import '../styles/StatsPage.css';  // Import the new CSS file
 
 const StatsPage = () => {
   const { user } = useContext(UserContext);
@@ -22,17 +23,9 @@ const StatsPage = () => {
 
           if (userDocSnap.exists()) {
             const userData = userDocSnap.data();
-            // Extract lifetime stats from Firestore document
             const { totalCalories, totalPoints, totalSteps } = userData;
-
-            // Update state with lifetime stats
             setLifetimeStats({ totalCalories, totalPoints, totalSteps });
-
-            // Save stats to localStorage for persistence
-            localStorage.setItem(
-              'stats',
-              JSON.stringify({ totalCalories, totalPoints, totalSteps })
-            );
+            localStorage.setItem('stats', JSON.stringify({ totalCalories, totalPoints, totalSteps }));
           } else {
             setError('No stats data found in Firestore');
           }
@@ -42,7 +35,6 @@ const StatsPage = () => {
       }
     };
 
-    // Load from localStorage if available
     const storedStats = JSON.parse(localStorage.getItem('stats'));
     if (storedStats) {
       setLifetimeStats(storedStats);
@@ -53,15 +45,23 @@ const StatsPage = () => {
 
   return (
     <div className="stats-container">
-      <h1>Your Stats</h1>
+      <h1>My Stats</h1>
       
       {error && <div className="error">{error}</div>}
 
       <div className="stats-section">
-        <h2>Lifetime Stats</h2>
-        <p>Total Calories: {lifetimeStats.totalCalories}</p>
-        <p>Total Points: {lifetimeStats.totalPoints}</p>
-        <p>Total Steps: {lifetimeStats.totalSteps}</p>
+        <div className="stats-row">
+          <div className="stat-label">Calories</div>
+          <div className="stat-value">{lifetimeStats.totalCalories}</div>
+        </div>
+        <div className="stats-row">
+          <div className="stat-label">Steps</div>
+          <div className="stat-value">{lifetimeStats.totalSteps} steps</div>
+        </div>
+        <div className="stats-row">
+          <div className="stat-label">Points Earned</div>
+          <div className="stat-value">{lifetimeStats.totalPoints} points</div>
+        </div>
       </div>
 
       <Link to="/home" className="back-link">Back to Homepage</Link>
