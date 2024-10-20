@@ -4,11 +4,18 @@ import logo from '../assets/logo.png';
 import { auth, db } from '../FirebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpPage = () => {
-  const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const validate = () => {
     const newErrors = {};
@@ -40,7 +47,11 @@ const SignUpPage = () => {
     e.preventDefault();
     if (validate()) {
       try {
-        const userCredential = await createUserWithEmailAndPassword(auth, form.email, form.password);
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          form.email,
+          form.password
+        );
         const user = userCredential.user;
 
         await setDoc(doc(db, 'User', user.email), {
@@ -49,9 +60,7 @@ const SignUpPage = () => {
           createdAt: new Date(),
         });
 
-        setSuccess('Account created successfully!');
-        setForm({ name: '', email: '', password: '', confirmPassword: '' });
-        setErrors({});
+        navigate('/home', { state: { name: form.name } });
       } catch (error) {
         setErrors({ firebase: error.message });
       }
@@ -98,12 +107,15 @@ const SignUpPage = () => {
           value={form.confirmPassword}
           onChange={handleChange}
         />
-        {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
+        {errors.confirmPassword && (
+          <div className="error">{errors.confirmPassword}</div>
+        )}
 
         {errors.firebase && <div className="error">{errors.firebase}</div>}
-        {success && <div className="success">{success}</div>}
 
-        <button type="submit" className="signup-button">Sign Up</button>
+        <button type="submit" className="signup-button">
+          Sign Up
+        </button>
       </form>
 
       <div className="login-link">
