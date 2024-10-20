@@ -27,4 +27,11 @@ class HomeViewController: UIViewController {
     @IBAction func startwalkPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "homeToWalk", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "homeToStats" {
+            let destinationVC = segue.destination as! StatsViewController
+            destinationVC.email = email
+        }
+    }
 }
