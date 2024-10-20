@@ -25,6 +25,8 @@ h1{
 .leaderboard-link,
 .stats-link{
   text-decoration: none;
+  color: #1e90ff;
+
 }
 
 .leaderboard-link:hover,
