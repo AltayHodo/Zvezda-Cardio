@@ -17,6 +17,8 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
+    
+    @IBOutlet weak var stepGoal: UITextField!
     @IBOutlet weak var error: UILabel!
     
     override func viewDidLoad() {
@@ -52,13 +54,14 @@ class SignupViewController: UIViewController {
             let nameOfficial = name.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let emailOfficial = email.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let passwordOffical = password.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let stepGoalOfficial = stepGoal.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             Auth.auth().createUser(withEmail: emailOfficial, password: passwordOffical) { result, err in
                 if err != nil {
                     self.error.text = err!.localizedDescription
                     self.error.alpha = 1
                 } else {
                     let db = Firestore.firestore()
-                    db.collection("User").document(emailOfficial).setData(["name": nameOfficial, "totalSteps": 0, "totalPoints": 0, "totalCalories": 0, "email": emailOfficial, "uid": result!.user.uid])
+                    db.collection("User").document(emailOfficial).setData(["name": nameOfficial, "totalSteps": 0, "totalPoints": 0, "totalCalories": 0, "email": emailOfficial, "stepGoal": stepGoalOfficial])
                     self.error.alpha = 0
                 }
                 self.dismiss(animated: true)
@@ -69,10 +72,6 @@ class SignupViewController: UIViewController {
         @IBAction func loginTransition(_ sender: Any) {
             self.dismiss(animated: true)
         }
-    
-    
-    
-    
     
     func showError(_ message: String) {
         error.text = message

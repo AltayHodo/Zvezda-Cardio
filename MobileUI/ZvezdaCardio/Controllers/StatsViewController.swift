@@ -40,7 +40,6 @@ class StatsViewController: UIViewController, CLLocationManagerDelegate {
         loadLifetimeStats()
     }
     
-    
     func loadLifetimeStats() {
         let db = Firestore.firestore()
         db.collection("User").document(self.email!).getDocument { (document, error) in
@@ -122,8 +121,6 @@ class StatsViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
         
-        // MARK: - Steps Logic
-        
         func loadPreviousStepsFromFirebase(completion: @escaping (Int, Int) -> Void) {
             let db = Firestore.firestore()
             
@@ -189,8 +186,6 @@ class StatsViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
 
-        // MARK: - Calories Logic
-        
         func loadPreviousCaloriesFromFirebase(completion: @escaping (Double, Double) -> Void) {
             let db = Firestore.firestore()
             
@@ -256,8 +251,47 @@ class StatsViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     
+//    func fetchWeeklyStepCountAndUpdate() {
+//        let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+//        
+//        // Calculate the start of the week (7 days ago)
+//        let startOfWeek = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
+//        let predicate = HKQuery.predicateForSamples(withStart: startOfWeek, end: Date(), options: .strictStartDate)
+//        
+//        let query = HKStatisticsQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
+//            guard let result = result, let sum = result.sumQuantity() else {
+//                print("No step count available for the week")
+//                return
+//            }
+//
+//            let weeklySteps = Int(sum.doubleValue(for: HKUnit.count()))
+//
+//            // Fetch the step goal from Firestore
+//            self.fetchUserStepGoal { userStepGoal in
+//                // Update the UI with weekly steps and step goal comparison
+//                DispatchQueue.main.async {
+//                    self.weeklySteps.text = "\(weeklySteps) steps"
+//                    self.checkStepGoal(weeklySteps: weeklySteps, stepGoal: userStepGoal)
+//                }
+//            }
+//        }
+//        
+//        healthStore.execute(query)
+//    }
+    
+    
     @IBAction func backToHome(_ sender: Any) {
         self.dismiss(animated: true)
     }
     
+    @IBAction func viewLeaderboard(_ sender: UIButton) {
+        performSegue(withIdentifier: "statsToLeaderboard", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "statsToLeaderboard" {
+            let destinationVC = segue.destination as! LeaderboardViewController
+            destinationVC.email = email
+        }
+    }
 }
