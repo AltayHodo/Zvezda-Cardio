@@ -32,41 +32,39 @@ class StatsViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func requestHealthKitAuthorization() {
-            let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
-            let activeEnergyType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+        let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+        let activeEnergyType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
 
-            let typesToRead: Set = [stepCountType, activeEnergyType]
+        let typesToRead: Set = [stepCountType, activeEnergyType]
 
-            healthStore.requestAuthorization(toShare: nil, read: typesToRead) { success, error in
-                if success {
-                    self.loadPreviousStepsFromFirebase { previousSteps in
-                        self.fetchStepCountAndUpdate(previousSteps: previousSteps)
-                    }
-                } else {
-                    print("HealthKit authorization failed: \(String(describing: error))")
-                }
-            }
-    }
-    
-    func loadPreviousStepsFromFirebase(completion: @escaping (Int) -> Void) {
-        
-        let db = Firestore.firestore()
-        
-        db.collection("User").document(self.email!).getDocument { (document, error) in
-            if let document = document, document.exists {
-                if let totalSteps = document.data()?["totalSteps"] as? Int {
-                    completion(totalSteps)
-                } else {
-                    completion(0) // No steps data found, assume 0
+        healthStore.requestAuthorization(toShare: nil, read: typesToRead) { success, error in
+            if success {
+                self.loadPreviousStepsFromFirebase { previousSteps, lastKnownSteps in
+                    self.fetchStepCountAndUpdate(previousSteps: previousSteps, lastKnownSteps: lastKnownSteps)
                 }
             } else {
-                print("Document does not exist or error: \(String(describing: error))")
-                completion(0) // Assume 0 steps if the document doesn't exist
+                print("HealthKit authorization failed: \(String(describing: error))")
             }
         }
     }
     
-    func fetchStepCountAndUpdate(previousSteps: Int) {
+    func loadPreviousStepsFromFirebase(completion: @escaping (Int, Int) -> Void) {
+            
+            let db = Firestore.firestore()
+            
+            db.collection("User").document(self.email!).getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let totalSteps = document.data()?["totalSteps"] as? Int ?? 0
+                    let lastKnownSteps = document.data()?["lastKnownSteps"] as? Int ?? 0
+                    completion(totalSteps, lastKnownSteps)
+                } else {
+                    print("Document does not exist or error: \(String(describing: error))")
+                    completion(0, 0) // Assume 0 steps if the document doesn't exist
+                }
+            }
+        }
+    
+    func fetchStepCountAndUpdate(previousSteps: Int, lastKnownSteps: Int) {
             let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
             
             let startOfDay = Calendar.current.startOfDay(for: Date())
@@ -78,56 +76,41 @@ class StatsViewController: UIViewController, CLLocationManagerDelegate {
                     return
                 }
 
-                let newSteps = Int(sum.doubleValue(for: HKUnit.count()))
-                let totalSteps = previousSteps + newSteps
+                let currentSteps = Int(sum.doubleValue(for: HKUnit.count()))
+                let stepsSinceLastCheck = currentSteps - lastKnownSteps
 
-                // Update the UI
-                DispatchQueue.main.async {
-                    self.steps.text = "\(totalSteps) steps"
-                    self.points.text = "\(totalSteps / 100)"
+                if stepsSinceLastCheck > 0 {
+                    let newTotalSteps = previousSteps + stepsSinceLastCheck
+
+                    // Update the UI
+                    DispatchQueue.main.async {
+                        self.steps.text = "\(newTotalSteps) steps"
+                        self.points.text = "\(newTotalSteps / 100)"
+                    }
+
+                    // Save the new total steps and last known steps back to Firebase
+                    self.saveTotalStepsToFirebase(totalSteps: newTotalSteps, lastKnownSteps: currentSteps)
                 }
-
-                // Save the new total steps back to Firebase
-                self.saveTotalStepsToFirebase(totalSteps: totalSteps)
             }
             
             healthStore.execute(query)
         }
 
-        func saveTotalStepsToFirebase(totalSteps: Int) {
+    func saveTotalStepsToFirebase(totalSteps: Int, lastKnownSteps: Int) {
             let db = Firestore.firestore()
             let userDocument = db.collection("User").document(email!)
             
             userDocument.setData([
-                "totalSteps": totalSteps
+                "totalSteps": totalSteps,
+                "lastKnownSteps": lastKnownSteps
             ], merge: true) { error in
                 if let error = error {
                     print("Error writing total steps to Firestore: \(error)")
                 } else {
-                    print("Total steps successfully written to Firestore!")
+                    print("Total steps and last known steps successfully written to Firestore!")
                 }
             }
         }
-    
-//    func fetchActiveEnergyBurned() {
-//        let energyType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
-//        
-//        let startOfDay = Calendar.current.startOfDay(for: Date())
-//        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: Date(), options: .strictStartDate)
-//
-//        let query = HKStatisticsQuery(quantityType: energyType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
-//            guard let result = result, let sum = result.sumQuantity() else {
-//                print("No calorie data available")
-//                return
-//            }
-//
-//            let caloriesBurned = sum.doubleValue(for: HKUnit.kilocalorie())
-//            DispatchQueue.main.async {
-//                self.calories.text = "\(Int(caloriesBurned)) kcal"
-//            }
-//        }
-//        healthStore.execute(query)
-//    }
     
     
     @IBAction func backToHome(_ sender: Any) {
