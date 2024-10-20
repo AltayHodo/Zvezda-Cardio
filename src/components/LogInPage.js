@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
-import '../styles/SignUpPage.css';  
+import '../styles/SignUpPage.css';
 import logo from '../assets/logo.png';
+import { auth, db } from '../FirebaseConfig';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
 
 const LogInPage = () => {
   const [form, setForm] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState('');
+  const [userData, setUserData] = useState(null);  // To store user data from Firestore
 
   const validate = () => {
     const newErrors = {};
-
-    // Email Validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!form.email || !emailPattern.test(form.email)) {
       newErrors.email = 'Enter a valid email address';
     }
-
-    // Password Validation
     if (!form.password || form.password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters long';
     }
 
     setErrors(newErrors);
-    // Return true if no errors
     return Object.keys(newErrors).length === 0;
   };
 
@@ -30,14 +31,28 @@ const LogInPage = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
-      // Handle login logic here
-      console.log('Login form submitted:', form);
-      // Reset the form and errors
-      setForm({ email: '', password: '' });
-      setErrors({});
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, form.email, form.password);
+        const user = userCredential.user;
+
+        const userDocRef = doc(db, 'User', user.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+          const userData = userDocSnap.data();
+          setUserData(userData);  
+          setSuccess(`Welcome back, ${userData.name}!`);
+        } else {
+          setErrors({ firebase: 'No user data found in Firestore' });
+        }
+
+        setForm({ email: '', password: '' });
+      } catch (error) {
+        setErrors({ firebase: error.message });
+      }
     }
   };
 
@@ -64,6 +79,10 @@ const LogInPage = () => {
           onChange={handleChange}
         />
         {errors.password && <div className="error">{errors.password}</div>}
+
+        {errors.firebase && <div className="error">{errors.firebase}</div>}
+        {success && <div className="success">{success}</div>}
+        {userData && <div className="user-data">Name: {userData.name}</div>}
 
         <button type="submit" className="login-button">Log In</button>
       </form>
