@@ -1,0 +1,33 @@
+body {
+  color: var(--orange);
+}
+
+.links > a{
+  color: var(--orange);
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+h1{
+  margin-bottom: 10px;
+}
+
+.links{
+  display: flex;
+  gap: 15px;
+}
+
+.leaderboard-link,
+.stats-link{
+  text-decoration: none;
+}
+
+.leaderboard-link:hover,
+.stats-link:hover{
+  text-decoration: underline;
+}

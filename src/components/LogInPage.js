@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../styles/SignUpPage.css';
 import logo from '../assets/logo.png';
 import { auth, db } from '../FirebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../UserContext';
 
 const LogInPage = () => {
   const [form, setForm] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState('');
-  const [userData, setUserData] = useState(null);  // To store user data from Firestore
+  const [userData, setUserData] = useState(null);
+  const { setUser } = useContext(UserContext);
+
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const validate = () => {
     const newErrors = {};
@@ -35,16 +40,23 @@ const LogInPage = () => {
     e.preventDefault();
     if (validate()) {
       try {
-        const userCredential = await signInWithEmailAndPassword(auth, form.email, form.password);
+        const email = form.email.toLowerCase().trim();
+
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          form.password
+        );
         const user = userCredential.user;
 
-        const userDocRef = doc(db, 'User', user.uid);
+        const userDocRef = doc(db, 'User', email);
         const userDocSnap = await getDoc(userDocRef);
 
         if (userDocSnap.exists()) {
           const userData = userDocSnap.data();
-          setUserData(userData);  
-          setSuccess(`Welcome back, ${userData.name}!`);
+          setUserData(userData);
+          setUser({ name: userData.name, email: form.email.toLowerCase() });
+          navigate('/home');
         } else {
           setErrors({ firebase: 'No user data found in Firestore' });
         }
@@ -84,7 +96,9 @@ const LogInPage = () => {
         {success && <div className="success">{success}</div>}
         {userData && <div className="user-data">Name: {userData.name}</div>}
 
-        <button type="submit" className="login-button">Log In</button>
+        <button type="submit" className="login-button">
+          Log In
+        </button>
       </form>
 
       <div className="signup-link">
