@@ -58,7 +58,7 @@ class SignupViewController: UIViewController {
                     self.error.alpha = 1
                 } else {
                     let db = Firestore.firestore()
-                    db.collection("User").document(emailOfficial).setData(["name": nameOfficial, "email": emailOfficial, "uid": result!.user.uid])
+                    db.collection("User").document(emailOfficial).setData(["name": nameOfficial, "totalSteps": 0, "totalPoints": 0, "totalCalories": 0, "email": emailOfficial, "uid": result!.user.uid])
                     self.error.alpha = 0
                 }
                 self.dismiss(animated: true)
