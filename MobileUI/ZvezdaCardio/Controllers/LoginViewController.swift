@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
                         if document != nil && document!.exists {
                             let documentData = document!.data()
                             self.name = (documentData!["name"] as! String)
-                            self.performSegue(withIdentifier: "loginToHome", sender: self)
+                            self.performSegue(withIdentifier: "loginToStats", sender: self)
                         }
                         else {
                             self.error.text = error?.localizedDescription
@@ -82,8 +82,8 @@ class LoginViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "loginToHome" {
-            let destinationVC = segue.destination as! HomeViewController
+        if segue.identifier == "loginToStats" {
+            let destinationVC = segue.destination as! StatsViewController
             destinationVC.email = email.text
             destinationVC.name = name
         }

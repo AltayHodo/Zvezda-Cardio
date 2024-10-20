@@ -33,5 +33,9 @@ class HomeViewController: UIViewController {
             let destinationVC = segue.destination as! StatsViewController
             destinationVC.email = email
         }
+        if segue.identifier == "homeToZvezda" {
+            let destinationVC = segue.destination as! ZvezdaChatBot
+            destinationVC.email = email
+        }
     }
 }

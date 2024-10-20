@@ -26,7 +26,9 @@ class StatsViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var lifetimeSteps: UILabel!
     @IBOutlet weak var lifetimePoints: UILabel!
     
+    var currSteps: Int?
     var email: String?
+    var name: String?
     
     var stepAnchor: HKQueryAnchor?
     var energyAnchor: HKQueryAnchor?
@@ -92,8 +94,8 @@ class StatsViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         func calculateAndSavePoints(for newSteps: Int, and newCalories: Double) {
-            let pointsFromSteps = newSteps / 100  // Example: 1 point for every 100 steps
-            let pointsFromCalories = Int(newCalories) / 100  // Example: 1 point for every 100 kcal
+            let pointsFromSteps = newSteps / 100
+            let pointsFromCalories = Int(newCalories) / 100
 
             totalPoints += pointsFromSteps + pointsFromCalories
 
@@ -149,6 +151,7 @@ class StatsViewController: UIViewController, CLLocationManagerDelegate {
                 }
 
                 let currentSteps = Int(sum.doubleValue(for: HKUnit.count()))
+                self.currSteps = currentSteps
                 let stepsSinceLastCheck = currentSteps - lastKnownSteps
 
                 if stepsSinceLastCheck > 0 {
@@ -251,47 +254,29 @@ class StatsViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     
-//    func fetchWeeklyStepCountAndUpdate() {
-//        let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
-//        
-//        // Calculate the start of the week (7 days ago)
-//        let startOfWeek = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
-//        let predicate = HKQuery.predicateForSamples(withStart: startOfWeek, end: Date(), options: .strictStartDate)
-//        
-//        let query = HKStatisticsQuery(quantityType: stepCountType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
-//            guard let result = result, let sum = result.sumQuantity() else {
-//                print("No step count available for the week")
-//                return
-//            }
-//
-//            let weeklySteps = Int(sum.doubleValue(for: HKUnit.count()))
-//
-//            // Fetch the step goal from Firestore
-//            self.fetchUserStepGoal { userStepGoal in
-//                // Update the UI with weekly steps and step goal comparison
-//                DispatchQueue.main.async {
-//                    self.weeklySteps.text = "\(weeklySteps) steps"
-//                    self.checkStepGoal(weeklySteps: weeklySteps, stepGoal: userStepGoal)
-//                }
-//            }
-//        }
-//        
-//        healthStore.execute(query)
-//    }
-    
-    
-    @IBAction func backToHome(_ sender: Any) {
-        self.dismiss(animated: true)
+    @IBAction func askZvezda(_ sender: Any) {
+        performSegue(withIdentifier: "statsToZvezda", sender: self)
     }
+    
     
     @IBAction func viewLeaderboard(_ sender: UIButton) {
         performSegue(withIdentifier: "statsToLeaderboard", sender: self)
     }
     
+    @IBAction func backPressed(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "statsToLeaderboard" {
             let destinationVC = segue.destination as! LeaderboardViewController
             destinationVC.email = email
+        }
+        if segue.identifier == "statsToZvezda" {
+            let destinationVC = segue.destination as! ZvezdaChatBot
+            destinationVC.email = email
+            destinationVC.steps = currSteps
         }
     }
 }
