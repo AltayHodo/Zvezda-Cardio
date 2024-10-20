@@ -11,5 +11,4 @@ import CoreLocation
 
 class LocationViewController: UIViewController {
     
-    
 }
