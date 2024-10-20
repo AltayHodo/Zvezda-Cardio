@@ -1,37 +1,33 @@
 import React, { useState } from 'react';
 import '../styles/SignUpPage.css';
 import logo from '../assets/logo.png';
+import { auth, db } from '../FirebaseConfig';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 
 const SignUpPage = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
   const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState('');
 
   const validate = () => {
     const newErrors = {};
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Full Name Validation
     if (!form.name || form.name.length < 2) {
       newErrors.name = 'Full Name must be at least 2 characters long';
     }
-
-    // Email Validation
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!form.email || !emailPattern.test(form.email)) {
       newErrors.email = 'Enter a valid email address';
     }
-
-    // Password Validation
     if (!form.password || form.password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters long';
     }
-
-    // Confirm Password Validation
     if (form.confirmPassword !== form.password) {
       newErrors.confirmPassword = 'Passwords do not match';
     }
 
     setErrors(newErrors);
-    // Return true if no errors
     return Object.keys(newErrors).length === 0;
   };
 
@@ -40,14 +36,25 @@ const SignUpPage = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
-      // Handle form submission here
-      console.log('Form submitted:', form);
-      // Reset the form and errors
-      setForm({ name: '', email: '', password: '', confirmPassword: '' });
-      setErrors({});
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, form.email, form.password);
+        const user = userCredential.user;
+
+        await setDoc(doc(db, 'User', user.email), {
+          name: form.name,
+          email: form.email,
+          createdAt: new Date(),
+        });
+
+        setSuccess('Account created successfully!');
+        setForm({ name: '', email: '', password: '', confirmPassword: '' });
+        setErrors({});
+      } catch (error) {
+        setErrors({ firebase: error.message });
+      }
     }
   };
 
@@ -92,6 +99,9 @@ const SignUpPage = () => {
           onChange={handleChange}
         />
         {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
+
+        {errors.firebase && <div className="error">{errors.firebase}</div>}
+        {success && <div className="success">{success}</div>}
 
         <button type="submit" className="signup-button">Sign Up</button>
       </form>
