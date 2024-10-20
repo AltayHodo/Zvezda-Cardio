@@ -804,20 +804,84 @@
             </objects>
             <point key="canvasLocation" x="1667.9389312977098" y="-980.28169014084517"/>
         </scene>
-        <!--View Controller-->
+        <!--Zvezda Chat Bot-->
         <scene sceneID="byE-oI-bSP">
             <objects>
-                <viewController id="r6K-IT-qzw" sceneMemberID="viewController">
+                <viewController id="r6K-IT-qzw" customClass="ZvezdaChatBot" customModule="ZvezdaCardio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xJK-ha-zDs">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Zvezda AI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OH-LN-shc">
+                                <rect key="frame" x="36" y="89" width="321" height="38"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JUG-Cq-hRy">
+                                <rect key="frame" x="50" y="171" width="293" height="336"/>
+                                <color key="backgroundColor" red="0.11372549830000001" green="0.12549020350000001" blue="0.2235293984" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="336" id="9xu-VQ-xhN"/>
+                                </constraints>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uhh-sc-p4n">
+                                <rect key="frame" x="279.66666666666669" y="547" width="63.333333333333314" height="35"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Send">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="sendMessage:" destination="r6K-IT-qzw" eventType="touchUpInside" id="19c-bF-oqP"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nBD-x1-S9I">
+                                <rect key="frame" x="36" y="547" width="235" height="35"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by Gemini AI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXC-U1-4I5">
+                                <rect key="frame" x="223.66666666666663" y="814.66666666666663" width="139.33333333333337" height="16.333333333333371"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="t86-vm-yZb"/>
                         <color key="backgroundColor" red="0.11372549830000001" green="0.12549020350000001" blue="0.2235293984" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Uhh-sc-p4n" firstAttribute="leading" secondItem="nBD-x1-S9I" secondAttribute="trailing" constant="8.6666666666667425" id="63H-Yl-zGu"/>
+                            <constraint firstItem="t86-vm-yZb" firstAttribute="trailing" secondItem="JUG-Cq-hRy" secondAttribute="trailing" constant="50" id="GU4-wC-Jpc"/>
+                            <constraint firstItem="JUG-Cq-hRy" firstAttribute="trailing" secondItem="Uhh-sc-p4n" secondAttribute="trailing" id="KjF-ct-vza"/>
+                            <constraint firstItem="Uhh-sc-p4n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nBD-x1-S9I" secondAttribute="trailing" constant="8" symbolic="YES" id="QSF-Wu-1wi"/>
+                            <constraint firstItem="7OH-LN-shc" firstAttribute="leading" secondItem="t86-vm-yZb" secondAttribute="leading" constant="36" id="UAb-8G-NBg"/>
+                            <constraint firstItem="t86-vm-yZb" firstAttribute="trailing" secondItem="gXC-U1-4I5" secondAttribute="trailing" constant="30" id="Xrj-x6-ip0"/>
+                            <constraint firstItem="JUG-Cq-hRy" firstAttribute="top" secondItem="xJK-ha-zDs" secondAttribute="top" constant="171" id="YTC-6Y-Lgg"/>
+                            <constraint firstItem="nBD-x1-S9I" firstAttribute="leading" secondItem="7OH-LN-shc" secondAttribute="leading" id="bjk-Gc-wgk"/>
+                            <constraint firstItem="nBD-x1-S9I" firstAttribute="bottom" secondItem="Uhh-sc-p4n" secondAttribute="bottom" id="lU9-Et-PUM"/>
+                            <constraint firstItem="Uhh-sc-p4n" firstAttribute="top" secondItem="JUG-Cq-hRy" secondAttribute="bottom" constant="40" id="mEq-xk-NDt"/>
+                            <constraint firstItem="JUG-Cq-hRy" firstAttribute="top" secondItem="7OH-LN-shc" secondAttribute="bottom" constant="44" id="pdb-rr-zgF"/>
+                            <constraint firstItem="JUG-Cq-hRy" firstAttribute="centerX" secondItem="7OH-LN-shc" secondAttribute="centerX" id="sEt-Zp-A0V"/>
+                            <constraint firstItem="t86-vm-yZb" firstAttribute="bottom" secondItem="gXC-U1-4I5" secondAttribute="bottom" constant="21" id="taU-Z2-HBf"/>
+                            <constraint firstItem="7OH-LN-shc" firstAttribute="centerX" secondItem="xJK-ha-zDs" secondAttribute="centerX" id="tt1-Yz-eHi"/>
+                            <constraint firstItem="nBD-x1-S9I" firstAttribute="top" secondItem="Uhh-sc-p4n" secondAttribute="top" id="znh-Eh-KiP"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="chatTextView" destination="JUG-Cq-hRy" id="hJf-1U-f1a"/>
+                        <outlet property="messageTextField" destination="nBD-x1-S9I" id="n1S-yS-jAT"/>
+                        <outlet property="sendButton" destination="Uhh-sc-p4n" id="r1L-je-7Es"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGu-q3-Fxb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2863" y="-980"/>
+            <point key="canvasLocation" x="2861.8320610687024" y="-980.28169014084517"/>
         </scene>
     </scenes>
     <resources>
@@ -830,6 +894,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func zvezdaClicked(_ sender: Any) {
+        performSegue(withIdentifier: "homeToZvezda", sender: self)
     }
     
     @IBAction func startwalkPressed(_ sender: Any) {
