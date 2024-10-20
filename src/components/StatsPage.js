@@ -6,21 +6,33 @@ import { UserContext } from '../UserContext';
 
 const StatsPage = () => {
   const { user } = useContext(UserContext);
-  const [dailyStats, setDailyStats] = useState(null);
-  const [lifetimeStats, setLifetimeStats] = useState(null);
+  const [lifetimeStats, setLifetimeStats] = useState({
+    totalCalories: 0,
+    totalPoints: 0,
+    totalSteps: 0
+  });
   const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
         if (user?.email) {
-          const userDocRef = doc(db, 'users', user.email.toLowerCase());
+          const userDocRef = doc(db, 'User', user.email.toLowerCase());
           const userDocSnap = await getDoc(userDocRef);
 
           if (userDocSnap.exists()) {
             const userData = userDocSnap.data();
-            setDailyStats(userData.dailyStats || 'No data available');
-            setLifetimeStats(userData.lifetimeStats || 'No data available');
+            // Extract lifetime stats from Firestore document
+            const { totalCalories, totalPoints, totalSteps } = userData;
+
+            // Update state with lifetime stats
+            setLifetimeStats({ totalCalories, totalPoints, totalSteps });
+
+            // Save stats to localStorage for persistence
+            localStorage.setItem(
+              'stats',
+              JSON.stringify({ totalCalories, totalPoints, totalSteps })
+            );
           } else {
             setError('No stats data found in Firestore');
           }
@@ -30,7 +42,13 @@ const StatsPage = () => {
       }
     };
 
-    fetchStats();
+    // Load from localStorage if available
+    const storedStats = JSON.parse(localStorage.getItem('stats'));
+    if (storedStats) {
+      setLifetimeStats(storedStats);
+    } else {
+      fetchStats();
+    }
   }, [user]);
 
   return (
@@ -40,13 +58,10 @@ const StatsPage = () => {
       {error && <div className="error">{error}</div>}
 
       <div className="stats-section">
-        <h2>Daily Stats</h2>
-        {/* {dailyStats ? <p>{JSON.stringify(dailyStats)}</p> : <p>Loading...</p>} */}
-      </div>
-
-      <div className="stats-section">
         <h2>Lifetime Stats</h2>
-        {/* {lifetimeStats ? <p>{JSON.stringify(lifetimeStats)}</p> : <p>Loading...</p>} */}
+        <p>Total Calories: {lifetimeStats.totalCalories}</p>
+        <p>Total Points: {lifetimeStats.totalPoints}</p>
+        <p>Total Steps: {lifetimeStats.totalSteps}</p>
       </div>
 
       <Link to="/home" className="back-link">Back to Homepage</Link>
